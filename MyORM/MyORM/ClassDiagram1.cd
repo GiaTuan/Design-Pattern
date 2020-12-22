@@ -8,38 +8,38 @@
     </TypeIdentifier>
   </Class>
   <Class Name="MyORM.MyOrmService">
-    <Position X="6.5" Y="2.25" Width="1.5" />
+    <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAgAAACAAIAAAAAABAMAAAAEAAQAAAAAAAACAACA=</HashCode>
+      <HashCode>AAIAAgAAACAAIAAAAAABAMAAAAAAAQAAAAAAAACAACA=</HashCode>
       <FileName>MyOrmService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.211" />
   </Class>
   <Class Name="MyORM.MyOrmProxy">
-    <Position X="3" Y="2.25" Width="1.5" />
+    <Position X="3" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAACAAIAAAAAAAAMAAAAEAAAAAAEAAAACAAAA=</HashCode>
+      <HashCode>AAIAAAAAACAAIAAAAAAAAMAAAAAAAAAAAEAAAACAAAA=</HashCode>
       <FileName>MyOrmProxy.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="MyORM.BusinessLogic">
-    <Position X="8.5" Y="4" Width="1.5" />
+    <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAoAAAAAAAAAAAABAAAAwAAAAAAAAAAAAAACA=</HashCode>
       <FileName>BusinessLogic.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.1" />
   </Class>
   <Interface Name="MyORM.IMyOrmService">
     <Position X="4.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAACAAIAAAAAAAAMAAAAEAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAIAAAAAACAAIAAAAAAAAMAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>IMyOrmService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MyORM.IBusinessLogic">
-    <Position X="10" Y="1.75" Width="1.5" />
+    <Position X="10" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAoAAAAAAAAAAAABAAAAwAAAAAAAAAAAAAACA=</HashCode>
       <FileName>IBusinessLogic.cs</FileName>
