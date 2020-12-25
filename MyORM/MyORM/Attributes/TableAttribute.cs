@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyORM.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class)] 
-    class TableAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Class)]
+    class TableAttribute: Attribute
     {
         public string TableName { get; set; }
     }

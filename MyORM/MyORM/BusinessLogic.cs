@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MyORM
 {
@@ -12,7 +13,7 @@ namespace MyORM
         public string GetTableNameAttribute<T>()
         {
             var attributes = typeof(T).GetCustomAttributes(typeof(TableAttribute), true);
-            if (attributes.Length == 0)
+            if(attributes.Length == 0)
             {
                 return null;
             }
@@ -29,18 +30,20 @@ namespace MyORM
 
             int index = 0;
 
-            foreach (var property in properties)
+            foreach(var property in properties)
             {
-                if (reader[index] != DBNull.Value)
+                if(reader[index] != DBNull.Value)
+                {
                     property.SetValue(obj, reader[index++]);
+                }
             }
         }
 
         public string GetColumnNameAttribute(object[] attributes)
         {
-            foreach (var attribute in attributes)
+            foreach(var attribute in attributes)
             {
-                if (((ColumnAttribute)attribute).ColumnName != null)
+                if(((ColumnAttribute)attribute).ColumnName != null)
                 {
                     return ((ColumnAttribute)attribute).ColumnName;
                 }
@@ -96,7 +99,7 @@ namespace MyORM
                     values.Append(properties[i].GetValue(obj, null));
                     values.Append("'");
                 }
-                else values.Append(properties[i].GetValue(obj, null)); ;
+                else values.Append(properties[i].GetValue(obj, null));
 
                 if (i < properties.Length - 1)
                 {

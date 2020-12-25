@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyORM.Attributes
 {
-    [AttributeUsage(AttributeTargets.Property,AllowMultiple = true)]
-    class ColumnAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
+    class ColumnAttribute: Attribute
     {
         public bool IsPrimaryKey { get; set; }
         public string ColumnName { get; set; }

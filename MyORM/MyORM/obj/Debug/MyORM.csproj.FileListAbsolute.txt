@@ -1,7 +1,7 @@
-C:\Users\tuanaudg\source\repos\MyORM\MyORM\bin\Debug\MyORM.exe.config
-C:\Users\tuanaudg\source\repos\MyORM\MyORM\bin\Debug\MyORM.exe
-C:\Users\tuanaudg\source\repos\MyORM\MyORM\bin\Debug\MyORM.pdb
-C:\Users\tuanaudg\source\repos\MyORM\MyORM\obj\Debug\MyORM.csprojAssemblyReference.cache
-C:\Users\tuanaudg\source\repos\MyORM\MyORM\obj\Debug\MyORM.csproj.CoreCompileInputs.cache
-C:\Users\tuanaudg\source\repos\MyORM\MyORM\obj\Debug\MyORM.exe
-C:\Users\tuanaudg\source\repos\MyORM\MyORM\obj\Debug\MyORM.pdb
+D:\Design Pattern\DoAn\MyORM\MyORM\obj\Debug\MyORM.csprojAssemblyReference.cache
+D:\Design Pattern\DoAn\MyORM\MyORM\obj\Debug\MyORM.csproj.CoreCompileInputs.cache
+D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\MyORM.exe.config
+D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\MyORM.exe
+D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\MyORM.pdb
+D:\Design Pattern\DoAn\MyORM\MyORM\obj\Debug\MyORM.exe
+D:\Design Pattern\DoAn\MyORM\MyORM\obj\Debug\MyORM.pdb

@@ -9,7 +9,7 @@ namespace MyORM.Models
 {
     class Phone
     {
-        [ColumnAttribute(IsPrimaryKey = true,IsAutoIncreaseKey = true)]
+        [ColumnAttribute(IsPrimaryKey = true, IsAutoIncreaseKey = true)]
         public int Id { get; set; }
 
         [ColumnAttribute(ColumnName = "phone")]
