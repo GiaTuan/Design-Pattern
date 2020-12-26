@@ -11,12 +11,12 @@ namespace MyORM
         private MyOrmService service;
         private IBusinessLogic businessLogic = new BusinessLogic(); //bridge pattern?????????
 
-        public bool Connect(string connectionString)
+        public bool Connect(string connectionString, string databaseType)
         {
             if (service == null)
             {
                 service = new MyOrmService();
-                return service.Connect(connectionString);
+                return service.Connect(connectionString, databaseType);
             }
             else return false;
         }

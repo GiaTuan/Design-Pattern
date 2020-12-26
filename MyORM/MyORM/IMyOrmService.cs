@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MyORM
 {
     public interface IMyOrmService
     {
-        bool Connect(string connectionString);
+        bool Connect(string connectionString, string databaseType);
         void Open();
         bool Add<T>(T obj) where T : new();
         IMyOrmService SelectAll<T>();

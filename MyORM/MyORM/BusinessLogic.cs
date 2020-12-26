@@ -1,10 +1,7 @@
 ﻿using MyORM.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
+using System.Data;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MyORM
 {
@@ -24,7 +21,7 @@ namespace MyORM
             }
         }
 
-        public void AddDataToObj<T>(SqlDataReader reader, T obj) where T : new()
+        public void AddDataToObj<T>(IDataReader reader, T obj) where T : new()
         {
             var properties = obj.GetType().GetProperties();
 
