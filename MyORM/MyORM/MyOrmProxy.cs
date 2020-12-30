@@ -167,5 +167,18 @@ namespace MyORM
             }
             return "";
         }
+
+
+
+        public bool Update<T>(T obj) where T : new()
+        {
+            bool result = service.Update<T>(obj);
+            return result;
+        }
+
+        public int SaveChange()
+        {
+            return service.SaveChange();
+        }
     }
 }

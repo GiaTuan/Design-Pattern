@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Data;
 using MySql.Data.MySqlClient;
 using Npgsql;
+using System.Text;
 
 namespace MyORM
 {
@@ -49,17 +50,38 @@ namespace MyORM
 
         public bool Add<T>(T obj) where T : new()
         {
-            string fields = businessLogic.GetFields(obj);
-            string values = businessLogic.GetValues(obj);
+            List<string> fields = businessLogic.GetFields(obj);
+            List<string> values = businessLogic.GetValues(obj);
+
+
+            //Chuyển fields thành query string
+            StringBuilder fieldQueryString = new StringBuilder();
+            foreach(string field in fields)
+            {
+                fieldQueryString.Append(field);
+                fieldQueryString.Append(',');
+            }
+            fieldQueryString.Remove(fieldQueryString.Length - 1, 1);
+
+
+            //Chuyển values thành query string
+            StringBuilder valueQueryString = new StringBuilder();
+            foreach (string value in values)
+            {
+                valueQueryString.Append(value);
+                valueQueryString.Append(',');
+            }
+            valueQueryString.Remove(valueQueryString.Length - 1, 1);
+
 
             string tableNameAttribute = businessLogic.GetTableNameAttribute<T>();
             try
             {
-                queryString = String.Format($"INSERT INTO {(tableNameAttribute != null ? tableNameAttribute : typeof(T).Name)}({fields}) VALUES({values})");
+                queryString = String.Format($"INSERT INTO {(tableNameAttribute != null ? tableNameAttribute : typeof(T).Name)}({fieldQueryString}) VALUES({valueQueryString})");
                 //var command = new SqlCommand(queryString, connection);
                 command.CommandText = queryString;
                 command.Connection = connection;
-                var reader = command.ExecuteNonQuery();
+                //var reader = command.ExecuteNonQuery();
             }
             catch (Exception)
             {
@@ -115,7 +137,7 @@ namespace MyORM
             connection.Close();
         }
 
-        ////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////
         public List<T> Where<T>(string where) where T : new()
         {
             string tableNameAttribute = businessLogic.GetTableNameAttribute<T>();
@@ -141,6 +163,58 @@ namespace MyORM
                 return null;
             }
             return result;
+        }
+
+
+        public bool Update<T>(T obj) where T : new()
+        {
+            string identityField = businessLogic.GetIdentityField(obj); //Lấy ID
+            int identityValue = businessLogic.GetIdentityValue(obj); //Lấy ID Value
+
+            //Thêm mới nếu không có Identity
+            if (identityValue == -1)
+            {
+                return Add(obj);
+            }
+
+            List<string> fields = businessLogic.GetFields(obj);
+            List<string> values = businessLogic.GetValues(obj);
+
+            //Chuyển field và value qua query string
+            StringBuilder field_valueQueryString = new StringBuilder();
+
+            for (int i = 0; i < fields.Count; i++)
+            {
+                field_valueQueryString = field_valueQueryString.Append(fields[i]);
+                field_valueQueryString = field_valueQueryString.Append(" = ");
+                field_valueQueryString = field_valueQueryString.Append(values[i]);
+                field_valueQueryString = field_valueQueryString.Append(',');
+            }
+            field_valueQueryString.Remove(field_valueQueryString.Length - 1, 1);
+
+            string tableNameAttribute = businessLogic.GetTableNameAttribute<T>();
+            try
+            {
+                queryString = String.Format($"UPDATE {(tableNameAttribute != null ? tableNameAttribute : typeof(T).Name)} SET {field_valueQueryString} WHERE {identityField} = {identityValue}");
+                command.CommandText = queryString;
+                command.Connection = connection;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        public int SaveChange()
+        {
+            var reader = command.ExecuteNonQuery();
+            if (reader == 1)
+            {
+                return 1;
+            }
+            return 0;
         }
     }
 }
