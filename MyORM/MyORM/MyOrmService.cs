@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Data;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Npgsql;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace MyORM
@@ -12,11 +13,14 @@ namespace MyORM
     {
         private IDbConnection connection;
         private IDbCommand command;
-        private List<object> list = new List<object>();
         private IBusinessLogic businessLogic = new BusinessLogic(); //bridge pattern?????????
 
         private static Dictionary<string, IDbConnection> dbconnections = new Dictionary<string, IDbConnection>();
         private static Dictionary<string, IDbCommand> dbcommands = new Dictionary<string, IDbCommand>();
+
+
+        private string queryString = null;
+        //private string whereQueryString = null;
 
 
         //Prototype pattern ??
@@ -30,9 +34,6 @@ namespace MyORM
             dbcommands.Add("MySQL Server", new MySqlCommand());
             dbcommands.Add("PostgreSQL Server", new NpgsqlCommand());
         }
-
-        private string queryString = null;
-
 
         public bool Connect(string connectionString, string databaseType)
         {
@@ -48,125 +49,64 @@ namespace MyORM
             connection.Open();
         }
 
-        public bool Add<T>(T obj) where T : new()
+        public IMyOrmService Select<T>(string selectedValues = null)
         {
-            List<string> fields = businessLogic.GetFields(obj);
-            List<string> values = businessLogic.GetValues(obj);
-
-
-            //Chuyển fields thành query string
-            StringBuilder fieldQueryString = new StringBuilder();
-            foreach(string field in fields)
-            {
-                fieldQueryString.Append(field);
-                fieldQueryString.Append(',');
-            }
-            fieldQueryString.Remove(fieldQueryString.Length - 1, 1);
-
-
-            //Chuyển values thành query string
-            StringBuilder valueQueryString = new StringBuilder();
-            foreach (string value in values)
-            {
-                valueQueryString.Append(value);
-                valueQueryString.Append(',');
-            }
-            valueQueryString.Remove(valueQueryString.Length - 1, 1);
-
-
             string tableNameAttribute = businessLogic.GetTableNameAttribute<T>();
-            try
-            {
-                queryString = String.Format($"INSERT INTO {(tableNameAttribute != null ? tableNameAttribute : typeof(T).Name)}({fieldQueryString}) VALUES({valueQueryString})");
-                //var command = new SqlCommand(queryString, connection);
-                command.CommandText = queryString;
-                command.Connection = connection;
-                //var reader = command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            return true;
+            queryString = String.Format("SELECT {0} FROM {1}", selectedValues != null ? selectedValues : "*", tableNameAttribute != null ? tableNameAttribute : typeof(T).Name);
+            return this;
+
         }
 
 
-        public IMyOrmService SelectAll<T>()
+        public IMyOrmService Where<T>(Expression<Func<T, bool>> func)
         {
+            string whereQueryString = businessLogic.ConvertLambdaExpressionToQueryString(func);
             string tableNameAttribute = businessLogic.GetTableNameAttribute<T>();
 
-            queryString = "SELECT * FROM " + (tableNameAttribute != null ? tableNameAttribute : typeof(T).Name);
+            queryString = String.Format($"SELECT * FROM " + (tableNameAttribute != null ? tableNameAttribute : typeof(T).Name) + " WHERE " + whereQueryString);
 
             return this;
         }
 
 
-        public List<T> ExecuteQuery<T>() where T : new()
+        public IMyOrmService Add<T>(T obj) where T : new ()
         {
-            List<T> result = new List<T>();
-            result = ExecuteQuery<T>(queryString);
-            return result;
-        }
+            List<string> fields = businessLogic.GetFields(obj);
+            List<string> values = businessLogic.GetValues(obj);
 
-        public List<T> ExecuteQuery<T>(string queryStr) where T : new()
-        {
-            List<T> result = new List<T>();
-            try
+            //Chuyển fields thành query string
+            StringBuilder fieldsQueryString = new StringBuilder();
+            foreach (string field in fields)
             {
-                //var command = new SqlCommand(queryStr, connection);
-                command.CommandText = queryStr;
-                command.Connection = connection;
-                var reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    T obj = new T();
-                    businessLogic.AddDataToObj(reader, obj);
-                    result.Add(obj);
-                }
-                reader.Close();
+                fieldsQueryString.Append(field);
+                fieldsQueryString.Append(',');
             }
-            catch (Exception)
+            fieldsQueryString.Remove(fieldsQueryString.Length - 1, 1);
+
+
+            //Chuyển values thành query string
+            StringBuilder valuesQueryString = new StringBuilder();
+            foreach (string value in values)
             {
+                valuesQueryString.Append(value);
+                valuesQueryString.Append(',');
             }
-            return result;
-        }
+            valuesQueryString.Remove(valuesQueryString.Length - 1, 1);
 
-        public void Close()
-        {
-            connection.Close();
-        }
-
-        /////////////////////////////////////////////////////////////////////////
-        public List<T> Where<T>(string where) where T : new()
-        {
             string tableNameAttribute = businessLogic.GetTableNameAttribute<T>();
 
-            List<T> result = new List<T>();
-            try
-            {
-                queryString = String.Format($"SELECT * FROM " + (tableNameAttribute != null ? tableNameAttribute : typeof(T).Name) + " WHERE " + where.ToString());
-                command.CommandText = queryString;
-                command.Connection = connection;
-                var reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    T obj = new T();
-                    businessLogic.AddDataToObj(reader, obj);
-                    result.Add(obj);
-                }
-                reader.Close();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-            return result;
+            queryString = String.Format($"INSERT INTO {(tableNameAttribute != null ? tableNameAttribute : typeof(T).Name)}({fieldsQueryString}) VALUES({valuesQueryString})");
+            return this;
         }
 
+        public IMyOrmService Delete<T>()
+        {
+            string tableNameAttribute = businessLogic.GetTableNameAttribute<T>();
+            queryString = "DELETE FROM " + (tableNameAttribute != null ? tableNameAttribute : typeof(T).Name);
+            return this;
+        }
 
-        public bool Update<T>(T obj) where T : new()
+        public IMyOrmService Update<T>(T obj) where T : new()
         {
             string identityField = businessLogic.GetIdentityField(obj); //Lấy ID
             int identityValue = businessLogic.GetIdentityValue(obj); //Lấy ID Value
@@ -180,24 +120,61 @@ namespace MyORM
             List<string> fields = businessLogic.GetFields(obj);
             List<string> values = businessLogic.GetValues(obj);
 
-            //Chuyển field và value qua query string
-            StringBuilder field_valueQueryString = new StringBuilder();
+            //Chuyển fields và values qua query string
+            StringBuilder fields_valuesQueryString = new StringBuilder();
 
             for (int i = 0; i < fields.Count; i++)
             {
-                field_valueQueryString = field_valueQueryString.Append(fields[i]);
-                field_valueQueryString = field_valueQueryString.Append(" = ");
-                field_valueQueryString = field_valueQueryString.Append(values[i]);
-                field_valueQueryString = field_valueQueryString.Append(',');
+                fields_valuesQueryString.Append(fields[i]);
+                fields_valuesQueryString.Append(" = ");
+                fields_valuesQueryString.Append(values[i]);
+                fields_valuesQueryString.Append(',');
             }
-            field_valueQueryString.Remove(field_valueQueryString.Length - 1, 1);
+            fields_valuesQueryString.Remove(fields_valuesQueryString.Length - 1, 1);
 
             string tableNameAttribute = businessLogic.GetTableNameAttribute<T>();
+
+            queryString = String.Format($"UPDATE {(tableNameAttribute != null ? tableNameAttribute : typeof(T).Name)} SET {fields_valuesQueryString} WHERE {identityField} = {identityValue}");
+            return this;
+        }
+
+
+        public List<T> ExecuteReader<T>() where T : new()
+        {
+            return ExecuteReader<T>(queryString);   
+        }
+
+        public List<T> ExecuteReader<T>(string queryStr) where T : new()
+        {
+            List<T> result = new List<T>();
             try
             {
-                queryString = String.Format($"UPDATE {(tableNameAttribute != null ? tableNameAttribute : typeof(T).Name)} SET {field_valueQueryString} WHERE {identityField} = {identityValue}");
                 command.CommandText = queryString;
                 command.Connection = connection;
+                var reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    T obj = new T();
+                    businessLogic.AddDataToObj(reader, obj);
+                    result.Add(obj);
+                }
+   
+                reader.Close();
+            }
+            catch (Exception)
+            {
+            }
+            return result;
+        }
+
+        public bool ExecuteNonQuery(string queryString)
+        {
+            try
+            {
+                command.CommandText = queryString;
+                command.Connection = connection;
+                var reader = command.ExecuteNonQuery();
             }
             catch (Exception)
             {
@@ -206,15 +183,14 @@ namespace MyORM
             return true;
         }
 
-
-        public int SaveChange()
+        public bool ExecuteNonQuery()
         {
-            var reader = command.ExecuteNonQuery();
-            if (reader == 1)
-            {
-                return 1;
-            }
-            return 0;
+            return ExecuteNonQuery(queryString);
         }
+        public void Close()
+        {
+            connection.Close();
+        }
+
     }
 }

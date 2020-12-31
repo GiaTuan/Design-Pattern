@@ -1,21 +1,42 @@
+C:\Users\tuanaudg\source\repos\MyORM\MyORM\bin\Debug\MyORM.exe.config
+C:\Users\tuanaudg\source\repos\MyORM\MyORM\bin\Debug\MyORM.exe
+C:\Users\tuanaudg\source\repos\MyORM\MyORM\bin\Debug\MyORM.pdb
+C:\Users\tuanaudg\source\repos\MyORM\MyORM\obj\Debug\MyORM.csprojAssemblyReference.cache
+C:\Users\tuanaudg\source\repos\MyORM\MyORM\obj\Debug\MyORM.csproj.CoreCompileInputs.cache
+C:\Users\tuanaudg\source\repos\MyORM\MyORM\obj\Debug\MyORM.exe
+C:\Users\tuanaudg\source\repos\MyORM\MyORM\obj\Debug\MyORM.pdb
+C:\Users\tuanaudg\Desktop\MyORM\MyORM\bin\Debug\MyORM.exe.config
+C:\Users\tuanaudg\Desktop\MyORM\MyORM\bin\Debug\MyORM.exe
+C:\Users\tuanaudg\Desktop\MyORM\MyORM\bin\Debug\MyORM.pdb
+C:\Users\tuanaudg\Desktop\MyORM\MyORM\obj\Debug\MyORM.csprojAssemblyReference.cache
+C:\Users\tuanaudg\Desktop\MyORM\MyORM\obj\Debug\MyORM.csproj.CoreCompileInputs.cache
+C:\Users\tuanaudg\Desktop\MyORM\MyORM\obj\Debug\MyORM.exe
+C:\Users\tuanaudg\Desktop\MyORM\MyORM\obj\Debug\MyORM.pdb
 D:\Design Pattern\DoAn\MyORM\MyORM\obj\Debug\MyORM.csprojAssemblyReference.cache
 D:\Design Pattern\DoAn\MyORM\MyORM\obj\Debug\MyORM.csproj.CoreCompileInputs.cache
+D:\Design Pattern\DoAn\MyORM\MyORM\obj\Debug\MyORM.exe
+D:\Design Pattern\DoAn\MyORM\MyORM\obj\Debug\MyORM.pdb
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\MyORM.exe.config
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\MyORM.exe
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\MyORM.pdb
-D:\Design Pattern\DoAn\MyORM\MyORM\obj\Debug\MyORM.exe
-D:\Design Pattern\DoAn\MyORM\MyORM\obj\Debug\MyORM.pdb
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\BouncyCastle.Crypto.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Google.Protobuf.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\K4os.Compression.LZ4.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\K4os.Compression.LZ4.Streams.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\K4os.Hash.xxHash.dll
+D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\MySql.Data.dll
+D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Npgsql.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Renci.SshNet.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Buffers.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Memory.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Numerics.Vectors.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Text.Encodings.Web.dll
+D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Text.Json.dll
+D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Threading.Channels.dll
+D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.ValueTuple.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Ubiety.Dns.Core.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Zstandard.Net.dll
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Google.Protobuf.pdb
@@ -23,70 +44,17 @@ D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Google.Protobuf.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\K4os.Compression.LZ4.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\K4os.Compression.LZ4.Streams.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\K4os.Hash.xxHash.xml
+D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\MySql.Data.xml
+D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Npgsql.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Renci.SshNet.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Buffers.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Memory.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Numerics.Vectors.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-D:\Design Pattern\DoAn\MyORM\MyORM\obj\Debug\MyORM.csproj.CopyComplete
-D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Npgsql.dll
-D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Text.Encodings.Web.dll
-D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Text.Json.dll
-D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Threading.Channels.dll
-D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Threading.Tasks.Extensions.dll
-D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.ValueTuple.dll
-D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\Npgsql.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Text.Encodings.Web.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Text.Json.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Threading.Channels.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\Design Pattern\DoAn\MyORM\MyORM\bin\Debug\System.ValueTuple.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\MyORM.exe.config
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\MyORM.exe
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\MyORM.pdb
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\BouncyCastle.Crypto.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\Google.Protobuf.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\K4os.Compression.LZ4.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\K4os.Compression.LZ4.Streams.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\K4os.Hash.xxHash.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\MySql.Data.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\Npgsql.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\Renci.SshNet.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Buffers.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Memory.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Numerics.Vectors.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Text.Encodings.Web.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Text.Json.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Threading.Channels.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Threading.Tasks.Extensions.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.ValueTuple.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\Ubiety.Dns.Core.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\Zstandard.Net.dll
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\Google.Protobuf.pdb
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\Google.Protobuf.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\K4os.Compression.LZ4.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\K4os.Compression.LZ4.Streams.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\K4os.Hash.xxHash.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\MySql.Data.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\Npgsql.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\Renci.SshNet.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Buffers.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Memory.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Numerics.Vectors.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Text.Encodings.Web.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Text.Json.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Threading.Channels.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.Threading.Tasks.Extensions.xml
-D:\OneDrive\Desktop\MyORM\MyORM\bin\Debug\System.ValueTuple.xml
-D:\OneDrive\Desktop\MyORM\MyORM\obj\Debug\MyORM.csprojAssemblyReference.cache
-D:\OneDrive\Desktop\MyORM\MyORM\obj\Debug\MyORM.csproj.CoreCompileInputs.cache
-D:\OneDrive\Desktop\MyORM\MyORM\obj\Debug\MyORM.csproj.CopyComplete
-D:\OneDrive\Desktop\MyORM\MyORM\obj\Debug\MyORM.exe
-D:\OneDrive\Desktop\MyORM\MyORM\obj\Debug\MyORM.pdb
+D:\Design Pattern\DoAn\MyORM\MyORM\obj\Debug\MyORM.csproj.CopyComplete

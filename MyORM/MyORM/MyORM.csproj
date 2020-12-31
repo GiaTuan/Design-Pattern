@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A373CA8D-2122-49E0-A731-8056AE17341A}</ProjectGuid>
+    <ProjectGuid>{BE0CD7FE-0D20-4F91-B1C8-274A133BC6C3}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>MyORM</RootNamespace>
     <AssemblyName>MyORM</AssemblyName>
@@ -114,18 +114,18 @@
     <Compile Include="Attributes\TableAttribute.cs" />
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="IBusinessLogic.cs" />
+    <Compile Include="IMyOrmService.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Phone.cs" />
     <Compile Include="MyOrmProxy.cs" />
-    <Compile Include="IMyOrmService.cs" />
     <Compile Include="MyOrmService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
 
 namespace MyORM
 {
@@ -6,15 +10,18 @@ namespace MyORM
     {
         bool Connect(string connectionString, string databaseType);
         void Open();
-        bool Add<T>(T obj) where T : new(); //Insert One
-        IMyOrmService SelectAll<T>();
-        List<T> ExecuteQuery<T>(string queryString) where T : new();
-        List<T> ExecuteQuery<T>() where T : new();
+
+        IMyOrmService Add<T>(T obj) where T : new();
+        IMyOrmService Select<T>(string selectedValues = null);
+        IMyOrmService Where<T>(Expression<Func<T, bool>> func);
+        IMyOrmService Delete<T>();
+        IMyOrmService Update<T>(T obj) where T : new();
+
+        bool ExecuteNonQuery(string queryString);
+        bool ExecuteNonQuery();
+        List<T> ExecuteReader<T>(string queryString) where T : new();
+        List<T> ExecuteReader<T>() where T : new();
+
         void Close();
-
-
-        bool Update<T>(T obj) where T : new(); //Update One
-        int SaveChange();
-
     }
 }

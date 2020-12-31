@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyORM.Models
 {
+    [TableAttribute(TableName = "dienthoai")]
     class Phone
     {
         [ColumnAttribute(IsPrimaryKey = true, IsAutoIncreaseKey = true)]
@@ -15,6 +16,9 @@ namespace MyORM.Models
         [ColumnAttribute(ColumnName = "phone")]
         public string PhoneNumber { get; set; }
 
-        public string Other { get; set; }
+        [ColumnAttribute(ColumnName = "idcustomer")]
+        public int IdCustomer { get; set; }
+
+
     }
 }

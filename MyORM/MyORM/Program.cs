@@ -1,6 +1,9 @@
 ﻿using MyORM.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MyORM
 {
@@ -12,22 +15,27 @@ namespace MyORM
             proxy.Connect("Server=localhost\\SQLEXPRESS;Database=test;Trusted_Connection=yes;", "SQL Server"); //SQL Server
             //proxy.Connect("Server=localhost;Database=test;Uid=root;Pwd=...;", "MySQL Server");   //MySQL Server
             //proxy.Connect("Server=127.0.0.1;Port=5432;Database=test;Username=postgres;Password=...;", "PostgreSQL Server");   //MySQL Server
-
             proxy.Open();
-            //Insert One
-            //proxy.Add(new Customer() { Name = "nntung", Age = 22, Gender = "male" });
-            //proxy.SaveChange();
+
+            //List<Customer> list = proxy.Select<Customer>().ExecuteReader<Customer>();
 
 
 
-            //Update One
-            //proxy.Update(new Customer() { Id = 23, Name = "hellllllllllllllo", Gender = "male", Age = 23 });
-            //proxy.SaveChange();
+            //Add
+            proxy.Add(new Customer() { Name = "ntt", Age = 22, Gender = "male" }).ExecuteNonQuery();
 
+            //Select
 
             //Where
-            List<Customer> customers = proxy.Where<Customer>(u => u.Name == "tuan" || u.Id == 1);
-            Console.Write(customers.Count);
+            List<Customer> customers = proxy.Where<Customer>(c => c.Name == "ntt" || c.Age >= 22).ExecuteReader<Customer>();
+            Console.WriteLine(customers.Count);
+
+            //Delete
+
+            //Update
+            proxy.Update(new Customer() { Id = 1, Name = "Nguyen Thanh Tung", Age = 22 }).ExecuteNonQuery();
+
+
             proxy.Close();
         }
     }

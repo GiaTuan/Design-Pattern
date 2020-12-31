@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyORM.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class)] 
-    class TableAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+    class ForeignKey : Attribute
     {
-        public string TableName { get; set; }
+        public bool IsForeignKey { get; set; }
     }
 }
