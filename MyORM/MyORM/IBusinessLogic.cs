@@ -20,5 +20,6 @@ namespace MyORM
         string GetIdentityColumnNameAttribute(object[] attributes);
         string GetIdentityField<T>(T obj) where T : new();
         int GetIdentityValue<T>(T obj) where T : new();
+        void AddDataToFlexibleObj<T>(IDataReader reader, T obj) where T : MyFlexibleObject;
     }
 }

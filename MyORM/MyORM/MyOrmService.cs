@@ -20,7 +20,7 @@ namespace MyORM
 
 
         private string queryString = null;
-        //private string whereQueryString = null;
+
 
 
         //Prototype pattern ??
@@ -58,13 +58,16 @@ namespace MyORM
         }
 
 
+
+
         public IMyOrmService Where<T>(Expression<Func<T, bool>> func)
         {
-            string whereQueryString = businessLogic.ConvertLambdaExpressionToQueryString(func);
+            /*string whereQueryString = businessLogic.ConvertLambdaExpressionToQueryString(func);
             string tableNameAttribute = businessLogic.GetTableNameAttribute<T>();
 
-            queryString = String.Format($"SELECT * FROM " + (tableNameAttribute != null ? tableNameAttribute : typeof(T).Name) + " WHERE " + whereQueryString);
-
+            queryString = String.Format($"SELECT * FROM " + (tableNameAttribute != null ? tableNameAttribute : typeof(T).Name) + " WHERE " + whereQueryString);*/
+            string whereQueryString = " WHERE " + businessLogic.ConvertLambdaExpressionToQueryString(func);
+            queryString += whereQueryString;
             return this;
         }
 
@@ -156,7 +159,11 @@ namespace MyORM
                 while (reader.Read())
                 {
                     T obj = new T();
-                    businessLogic.AddDataToObj(reader, obj);
+                    if(obj is MyFlexibleObject)
+                    {
+                        businessLogic.AddDataToFlexibleObj(reader,obj as MyFlexibleObject);
+                    }
+                    else businessLogic.AddDataToObj(reader, obj);
                     result.Add(obj);
                 }
    
@@ -192,5 +199,50 @@ namespace MyORM
             connection.Close();
         }
 
+
+        //============================== test
+
+        public List<object> ExecuteReader2()
+        {
+            return ExecuteReader2(queryString);   
+        }
+
+        public List<object> ExecuteReader2(string queryStr)
+        {
+            List<object> result = new List<object>();
+            try
+            {
+                command.CommandText = queryString;
+                command.Connection = connection;
+                var reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    object obj = new object();
+                    businessLogic.AddDataToObj(reader, obj);
+                    result.Add(obj);
+                }
+
+                reader.Close();
+            }
+            catch (Exception)
+            {
+            }
+            return result;
+        }
+
+        public IMyOrmService GroupBy(string strGroupBy)
+        {
+            string groupByQueryString = " GROUP BY " + strGroupBy;
+            queryString += groupByQueryString;
+            return this;
+        }
+
+        public IMyOrmService Having<T>(Expression<Func<T, bool>> func)
+        {
+            string havingQueryString = " HAVING " + businessLogic.ConvertLambdaExpressionToQueryString(func);
+            queryString += havingQueryString;
+            return this;
+        }
     }
 }

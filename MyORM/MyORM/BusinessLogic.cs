@@ -36,6 +36,16 @@ namespace MyORM
                 if (reader[index] != DBNull.Value)
                     property.SetValue(obj, reader[index++]);
             }
+
+        }
+
+        public void AddDataToFlexibleObj<T>(IDataReader reader, T obj) where T : MyFlexibleObject
+        {
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                string fieldName = reader.GetName(i);
+                obj[fieldName] = reader[i];
+            }
         }
 
         public string GetColumnNameAttribute(object[] attributes)

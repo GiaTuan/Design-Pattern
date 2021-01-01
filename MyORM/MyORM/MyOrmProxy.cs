@@ -75,6 +75,14 @@ namespace MyORM
             service.Close();
         }
 
+        public IMyOrmService GroupBy(string strGroupBy)
+        {
+            return service.GroupBy(strGroupBy);
+        }
 
+        public IMyOrmService Having<T>(Expression<Func<T, bool>> func)
+        {
+            return service.Having(func);
+        }
     }
 }

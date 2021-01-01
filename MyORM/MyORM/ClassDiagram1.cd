@@ -10,7 +10,7 @@
   <Class Name="MyORM.MyOrmService">
     <Position X="6.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAICAAAAARAMAAAAEAAQAAAAAAQACAACA=</HashCode>
+      <HashCode>AAYBAAAAAAAAICAAAAQBAMAAAAUAAQAAAAAAQACAACA=</HashCode>
       <FileName>MyOrmService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.211" />
@@ -18,7 +18,7 @@
   <Class Name="MyORM.MyOrmProxy">
     <Position X="3" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAICAAAAAAAMAAAAEAAAAAAEAAQACAAAA=</HashCode>
+      <HashCode>AAYAAAAAAAAAICAAAAAAAMAAAAEAAAAAAEAAQACAAAA=</HashCode>
       <FileName>MyOrmProxy.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -26,22 +26,29 @@
   <Class Name="MyORM.BusinessLogic">
     <Position X="14.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAoAAAAAAAAAAAABAAAAwAAAABAQgAAAAAQCA=</HashCode>
+      <HashCode>AAAEAAAAoAAAAACAAAAAAJAAAAwAAAABAAAEAAAAACA=</HashCode>
       <FileName>BusinessLogic.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="MyORM.MyFlexibleObject">
+    <Position X="9.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MyFlexibleObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="MyORM.IMyOrmService">
     <Position X="4.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAICAAAAAAAMAAAAEAAAAAAAAAQACAAAA=</HashCode>
+      <HashCode>AAYAAAAAAAAAICAAAAAAAMAAAAEAAAAAAAAAQACAAAA=</HashCode>
       <FileName>IMyOrmService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="MyORM.IBusinessLogic">
-    <Position X="14.25" Y="1.25" Width="1.5" />
+    <Position X="12.25" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAoAAAAAAAAAAAABAAAAwAAAABAAAAAAAAACA=</HashCode>
+      <HashCode>AAAEAAAAoAAAAACAAAAAAJAAAAwAAAABAAAEAAAAACA=</HashCode>
       <FileName>IBusinessLogic.cs</FileName>
     </TypeIdentifier>
   </Interface>

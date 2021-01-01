@@ -117,6 +117,7 @@
     <Compile Include="IMyOrmService.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Phone.cs" />
+    <Compile Include="MyFlexibleObject.cs" />
     <Compile Include="MyOrmProxy.cs" />
     <Compile Include="MyOrmService.cs" />
     <Compile Include="Program.cs" />

@@ -14,6 +14,10 @@ namespace MyORM
         IMyOrmService Add<T>(T obj) where T : new();
         IMyOrmService Select<T>(string selectedValues = null);
         IMyOrmService Where<T>(Expression<Func<T, bool>> func);
+        IMyOrmService GroupBy(string strGroupBy);
+
+        IMyOrmService Having<T>(Expression<Func<T, bool>> func);
+
         IMyOrmService Delete<T>();
         IMyOrmService Update<T>(T obj) where T : new();
 
@@ -23,5 +27,8 @@ namespace MyORM
         List<T> ExecuteReader<T>() where T : new();
 
         void Close();
+
+        //===
+       // List<object> ExecuteReader2()
     }
 }

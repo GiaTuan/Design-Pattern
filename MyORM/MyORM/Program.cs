@@ -17,7 +17,7 @@ namespace MyORM
             //proxy.Connect("Server=127.0.0.1;Port=5432;Database=test;Username=postgres;Password=...;", "PostgreSQL Server");   //MySQL Server
             proxy.Open();
 
-            //List<Customer> list = proxy.Select<Customer>().ExecuteReader<Customer>();
+            List<MyFlexibleObject> list = proxy.Select<Customer>("id").GroupBy("id").Having<Customer>(c => c.Id == 1).ExecuteReader<MyFlexibleObject>();
 
 
 
