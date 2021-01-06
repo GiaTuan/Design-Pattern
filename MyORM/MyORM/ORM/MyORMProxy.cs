@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
-namespace MyORM
+namespace MyORM.ORM
 {
-    public class MyOrmProxy : IMyOrmService
+    class MyORMProxy : IMyORM
     {
-        MyOrmService service;
+        MyOrm service;
 
         public bool Connect(string connectionString, string databaseType)
         {
             if (service == null)
             {
-                service = new MyOrmService();
+                service = new MyOrm();
                 return service.Connect(connectionString, databaseType);
             }
             else return false;
@@ -25,29 +22,40 @@ namespace MyORM
         {
             service.Open();
         }
-        public IMyOrmService Add<T>(T obj) where T : new ()
+
+        public IMyORM Add<T>(T obj) where T : new()
         {
             return service.Add<T>(obj);
         }
 
-        public IMyOrmService Select<T>(string selectedValues = null)
+        public IMyORM Select<T>(string selectedValues = null)
         {
             return service.Select<T>(selectedValues);
         }
 
-        public IMyOrmService Where<T>(Expression<Func<T,bool>> func)
+        public IMyORM Where<T>(Expression<Func<T, bool>> func)
         {
             return service.Where<T>(func);
         }
 
-        public IMyOrmService Delete<T>()
+        public IMyORM Delete<T>()
         {
             return service.Delete<T>();
         }
 
-        public IMyOrmService Update<T>(T obj) where T : new()
+        public IMyORM Update<T>(T obj) where T : new()
         {
             return service.Update<T>(obj);
+        }
+
+        public IMyORM GroupBy(string strGroupBy)
+        {
+            return service.GroupBy(strGroupBy);
+        }
+
+        public IMyORM Having<T>(Expression<Func<T, bool>> func)
+        {
+            return service.Having(func);
         }
 
         public List<T> ExecuteReader<T>() where T : new()
@@ -75,14 +83,5 @@ namespace MyORM
             service.Close();
         }
 
-        public IMyOrmService GroupBy(string strGroupBy)
-        {
-            return service.GroupBy(strGroupBy);
-        }
-
-        public IMyOrmService Having<T>(Expression<Func<T, bool>> func)
-        {
-            return service.Having(func);
-        }
     }
 }

@@ -1,9 +1,6 @@
 ﻿using MyORM.Attributes;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -25,29 +22,6 @@ namespace MyORM
             }
         }
 
-        public void AddDataToObj<T>(IDataReader reader, T obj)
-        {
-            var properties = obj.GetType().GetProperties();
-
-            int index = 0;
-
-            foreach (var property in properties)
-            {
-                if (reader[index] != DBNull.Value)
-                    property.SetValue(obj, reader[index++]);
-            }
-
-        }
-
-        public void AddDataToFlexibleObj<T>(IDataReader reader, T obj) where T : MyFlexibleObject
-        {
-            for (int i = 0; i < reader.FieldCount; i++)
-            {
-                string fieldName = reader.GetName(i);
-                obj[fieldName] = reader[i];
-            }
-        }
-
         public string GetColumnNameAttribute(object[] attributes)
         {
             foreach (var attribute in attributes)
@@ -64,6 +38,7 @@ namespace MyORM
         {
             List<string> fields = new List<string>();
             var properties = obj.GetType().GetProperties();
+
             for (int i = 0; i < properties.Length; i++)
             {
                 if (properties[i].GetValue(obj, null) == null) continue;
@@ -102,7 +77,6 @@ namespace MyORM
                     value.Append("'");
                     value.Append(properties[i].GetValue(obj, null));
                     value.Append("'");
-
                     values.Add(value.ToString());
                 }
                 else
@@ -237,7 +211,7 @@ namespace MyORM
         {
             foreach (var attribute in attributes)
             {
-                if (((ColumnAttribute)attribute).IsPrimaryKey != null)
+                if (((ColumnAttribute)attribute).IsPrimaryKey != false)
                 {
                     return ((ColumnAttribute)attribute).ColumnName;
                 }

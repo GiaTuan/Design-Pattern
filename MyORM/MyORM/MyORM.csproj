@@ -112,21 +112,29 @@
   <ItemGroup>
     <Compile Include="Attributes\ColumnAttribute.cs" />
     <Compile Include="Attributes\TableAttribute.cs" />
-    <Compile Include="BusinessLogic.cs" />
-    <Compile Include="IBusinessLogic.cs" />
-    <Compile Include="IMyOrmService.cs" />
+    <Compile Include="BusinessLogic\BusinessLogic.cs" />
+    <Compile Include="BusinessLogic\IBusinessLogic.cs" />
+    <Compile Include="Mapping\Mapping.cs" />
+    <Compile Include="ORM\IMyORM.cs" />
+    <Compile Include="ORM\MyOrmProxy.cs" />
+    <Compile Include="SQL\ISQL.cs" />
+    <Compile Include="SQL\MySQL.cs" />
+    <Compile Include="SQL\PostgeSQL.cs" />
+    <Compile Include="QueryBuilder\IQueryBuilder.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Phone.cs" />
-    <Compile Include="MyFlexibleObject.cs" />
-    <Compile Include="MyOrmProxy.cs" />
-    <Compile Include="MyOrmService.cs" />
+    <Compile Include="Models\MyFlexibleObject.cs" />
+    <Compile Include="ORM\MyOrm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryBuilder\QueryBuilder.cs" />
+    <Compile Include="SQL\SQLServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

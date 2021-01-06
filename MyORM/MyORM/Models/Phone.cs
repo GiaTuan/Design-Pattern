@@ -1,13 +1,8 @@
 ﻿using MyORM.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyORM.Models
 {
-    [TableAttribute(TableName = "dienthoai")]
+    [TableAttribute(TableName = "phone")]
     class Phone
     {
         [ColumnAttribute(IsPrimaryKey = true, IsAutoIncreaseKey = true)]
@@ -18,7 +13,5 @@ namespace MyORM.Models
 
         [ColumnAttribute(ColumnName = "idcustomer")]
         public int IdCustomer { get; set; }
-
-
     }
 }

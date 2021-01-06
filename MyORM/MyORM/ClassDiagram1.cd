@@ -7,49 +7,101 @@
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MyORM.MyOrmService">
-    <Position X="6.5" Y="2.25" Width="1.5" />
+  <Class Name="MyORM.BusinessLogic" Collapsed="true">
+    <Position X="6.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYBAAAAAAAAICAAAAQBAMAAAAUAAQAAAAAAQACAACA=</HashCode>
-      <FileName>MyOrmService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.211" />
-  </Class>
-  <Class Name="MyORM.MyOrmProxy">
-    <Position X="3" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAYAAAAAAAAAICAAAAAAAMAAAAEAAAAAAEAAQACAAAA=</HashCode>
-      <FileName>MyOrmProxy.cs</FileName>
+      <HashCode>AAAEAAAAoAAAAACAAAAAAIAAAAwAAAABAAAEAAAAACA=</HashCode>
+      <FileName>BusinessLogic\BusinessLogic.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MyORM.BusinessLogic">
-    <Position X="14.25" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAEAAAAoAAAAACAAAAAAJAAAAwAAAABAAAEAAAAACA=</HashCode>
-      <FileName>BusinessLogic.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="MyORM.MyFlexibleObject">
-    <Position X="9.25" Y="1" Width="1.5" />
+  <Class Name="MyORM.MyFlexibleObject" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MyFlexibleObject.cs</FileName>
+      <FileName>Models\MyFlexibleObject.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="MyORM.IMyOrmService">
+  <Class Name="MyORM.IQueryBuilder" Collapsed="true">
+    <Position X="3.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgYAAACAAAAAAAAAAAAAAAAFAAEAAQAAAAAAQAAAAAA=</HashCode>
+      <FileName>QueryBuilder\IQueryBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyORM.QueryBuilder" Collapsed="true">
+    <Position X="3.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgYAAACAAAAAAAAAAAAAAAAEAAEAAAAAAAAAQAAAACA=</HashCode>
+      <FileName>QueryBuilder\QueryBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyORM.SQLServer" Collapsed="true">
+    <Position X="9" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>SQL\SQLServer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyORM.MySQL" Collapsed="true">
+    <Position X="10.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>SQL\MySQL.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyORM.PostgeSQL" Collapsed="true">
+    <Position X="12.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>SQL\PostgeSQL.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyORM.MyOrm" Collapsed="true">
+    <Position X="6.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAACAAAAAICAAAAABAMAEAAUIAAAAAAAAQACAACA=</HashCode>
+      <FileName>ORM\MyOrm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyORM.ORM.MyORMProxy" Collapsed="true">
+    <Position X="3.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAACAAAAAICAAAAAAAMAEAAEAAAAAAEAAQACAAAA=</HashCode>
+      <FileName>ORM\MyOrmProxy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyORM.Mapping" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Mapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MyORM.IMyORM" Collapsed="true">
     <Position X="4.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYAAAAAAAAAICAAAAAAAMAAAAEAAAAAAAAAQACAAAA=</HashCode>
-      <FileName>IMyOrmService.cs</FileName>
+      <HashCode>AAYAAACAAAAAICAAAAAAAMAEAAEAAAAAAAAAQACAAAA=</HashCode>
+      <FileName>ORM\IMyORM.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="MyORM.IBusinessLogic">
-    <Position X="12.25" Y="1" Width="1.5" />
+  <Interface Name="MyORM.IBusinessLogic" Collapsed="true">
+    <Position X="6.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAoAAAAACAAAAAAJAAAAwAAAABAAAEAAAAACA=</HashCode>
-      <FileName>IBusinessLogic.cs</FileName>
+      <HashCode>AAAEAAAAoAAAAACAAAAAAIAAAAwAAAABAAAEAAAAACA=</HashCode>
+      <FileName>BusinessLogic\IBusinessLogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MyORM.ISQL" Collapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>SQL\ISQL.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
