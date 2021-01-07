@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace MyORM
 {
@@ -22,5 +19,8 @@ namespace MyORM
         {
             return queryString;
         }
+
+
+        public abstract void GroupBy<T>(Expression<Func<T, object>> func);
     }
 }

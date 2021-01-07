@@ -83,5 +83,11 @@ namespace MyORM.ORM
             service.Close();
         }
 
+
+
+        public IMyORM GroupBy<T>(Expression<Func<T, object>> func)
+        {
+            return service.GroupBy<T>(func);
+        }
     }
 }

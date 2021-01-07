@@ -12,8 +12,10 @@ namespace MyORM
         bool CheckIsAutoIncreaseKey(object[] attributes);
         string ConvertLambdaExpressionToQueryString(Expression body);
         string ConvertLambdaExpressionTypeToQueryString(ExpressionType nodeType);
-        string GetIdentityColumnNameAttribute(object[] attributes);
         string GetIdentityField<T>(T obj) where T : new();
         int GetIdentityValue<T>(T obj) where T : new();
+
+
+        bool CheckIsPrimaryKey(object[] attributes);
     }
 }

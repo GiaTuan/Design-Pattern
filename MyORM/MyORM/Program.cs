@@ -1,6 +1,7 @@
 ﻿using MyORM.Models;
 using MyORM.ORM;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MyORM
 {
@@ -35,7 +36,7 @@ namespace MyORM
             MyORMProxy proxy = new MyORMProxy();
             proxy.Connect("Server=localhost\\SQLEXPRESS;Database=test;Trusted_Connection=yes;", "SQL Server");
             proxy.Open();
-            List<MyFlexibleObject> list = proxy.Select<Customer>("name").ExecuteReader<MyFlexibleObject>();
+            List<MyFlexibleObject> list = proxy.Select<Customer>("id,count(*)").GroupBy<Customer>(c => new { c.Id, c.Name }).Having<Customer>(c => c.Id == 1).ExecuteReader<MyFlexibleObject>();
             proxy.Close();
         }
     }

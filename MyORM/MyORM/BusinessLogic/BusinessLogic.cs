@@ -148,11 +148,36 @@ namespace MyORM
                 }
                 return ((MemberExpression)body).Member.Name;
             }
+            if (body is UnaryExpression)
+            {
+                return ConvertLambdaExpressionToQueryString(((UnaryExpression)body).Operand)
+                    + ConvertLambdaExpressionTypeToQueryString(((UnaryExpression)body).NodeType);
+            }
             if (body is BinaryExpression)
             {
                 return ConvertLambdaExpressionToQueryString(((BinaryExpression)body).Left)
                     + ConvertLambdaExpressionTypeToQueryString(((BinaryExpression)body).NodeType)
                     + ConvertLambdaExpressionToQueryString(((BinaryExpression)body).Right);
+            }
+            if(body is NewExpression)
+            {
+                StringBuilder queryString = new StringBuilder();
+                int argumentsLength = ((NewExpression)body).Arguments.Count;
+                
+                for (int i = 0; i < argumentsLength; i++)
+                {
+                    if(i == 0)
+                    {
+                        queryString = queryString.Append(ConvertLambdaExpressionToQueryString(((NewExpression)body).Arguments[i]));
+                    }
+                    else
+                    {
+                        queryString.Append(',');
+                        queryString.Append(ConvertLambdaExpressionToQueryString(((NewExpression)body).Arguments[i]));
+                    }
+
+                }
+                return queryString.ToString();
             }
             if (body is LambdaExpression)
             {
@@ -207,17 +232,6 @@ namespace MyORM
             return "";
         }
 
-        public string GetIdentityColumnNameAttribute(object[] attributes)
-        {
-            foreach (var attribute in attributes)
-            {
-                if (((ColumnAttribute)attribute).IsPrimaryKey != false)
-                {
-                    return ((ColumnAttribute)attribute).ColumnName;
-                }
-            }
-            return null;
-        }
 
         public string GetIdentityField<T>(T obj) where T : new()
         {
@@ -228,11 +242,22 @@ namespace MyORM
 
                 var attributes = properties[i].GetCustomAttributes(false);  //Lay tat ca cac attributes cua property
 
-                string identityColumnNameAttribute = GetIdentityColumnNameAttribute(attributes);
 
-                if (identityColumnNameAttribute != null)
+
+                bool isPrimaryProperty = CheckIsPrimaryKey(attributes); // kiem tra xem co phai la primary key hay k?
+
+                if (isPrimaryProperty)
                 {
-                    return identityColumnNameAttribute;
+                    string columnNameAttribute = GetColumnNameAttribute(attributes);
+
+                    if (columnNameAttribute != null)
+                    {
+                        return columnNameAttribute;
+                    }
+                    else
+                    {
+                        return properties[i].Name;
+                    }
                 }
             }
 
@@ -251,14 +276,28 @@ namespace MyORM
                 var attributes = properties[i].GetCustomAttributes(false);  //Lay tat ca cac attributes cua property
 
 
-                string identityColumnNameAttribute = GetIdentityColumnNameAttribute(attributes);
-
-                if (identityColumnNameAttribute != null)
+                bool isPrimaryProperty = CheckIsPrimaryKey(attributes); // kiem tra xem co phai la primary key hay k?
+                
+                if (isPrimaryProperty)
                 {
                     return int.Parse(properties[i].GetValue(obj, null).ToString());
                 }
             }
             return -1;
+        }
+
+
+
+        public bool CheckIsPrimaryKey(object[] attributes)
+        {
+            foreach (var attribute in attributes)
+            {
+                if (((ColumnAttribute)attribute).IsPrimaryKey == true)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

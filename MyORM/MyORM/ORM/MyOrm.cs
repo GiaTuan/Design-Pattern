@@ -76,7 +76,7 @@ namespace MyORM
             int identityValue = businessLogic.GetIdentityValue(obj); //Lấy ID Value
 
             //Thêm mới nếu không có Identity
-            if (identityValue == -1)
+            if (identityValue == 0)
             {
                 return Add(obj);
             }
@@ -143,6 +143,14 @@ namespace MyORM
         public void Close()
         {
             connection.Close();
+        }
+
+
+
+        public IMyORM GroupBy<T>(Expression<Func<T, object>> func)
+        {
+            builder.GroupBy<T>(func);
+            return this;
         }
     }
 }

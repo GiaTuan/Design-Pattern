@@ -23,5 +23,8 @@ namespace MyORM
         List<T> ExecuteReader<T>() where T : new();
 
         void Close();
+
+
+        IMyORM GroupBy<T>(Expression<Func<T, object>> func);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -104,6 +103,14 @@ namespace MyORM
             string tableNameAttribute = businessLogic.GetTableNameAttribute<T>();
 
             queryString = String.Format($"UPDATE {(tableNameAttribute != null ? tableNameAttribute : typeof(T).Name)} SET {fields_valuesQueryString} WHERE {identityField} = {identityValue}");
+        }
+
+
+
+        public override void GroupBy<T>(Expression<Func<T, object>> func)
+        {
+            string groupByQuery = "GROUP BY " + businessLogic.ConvertLambdaExpressionToQueryString(func);
+            queryString = queryString + " " + groupByQuery;
         }
     }
 }
