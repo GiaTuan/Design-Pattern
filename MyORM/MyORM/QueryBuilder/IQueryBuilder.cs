@@ -22,5 +22,9 @@ namespace MyORM
 
 
         public abstract void GroupBy<T>(Expression<Func<T, object>> func);
+
+
+        //
+        public abstract void Join<T>(Expression<Func<T, object>> func);
     }
 }

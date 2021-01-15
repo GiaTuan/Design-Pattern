@@ -17,5 +17,10 @@ namespace MyORM
 
 
         bool CheckIsPrimaryKey(object[] attributes);
+
+
+        //
+        string GetOneToOneColumnNameAttribute(object[] attributes);
+        string GetJoinedTableNameAttribute<T>(string joinedTablePropertyeName);
     }
 }

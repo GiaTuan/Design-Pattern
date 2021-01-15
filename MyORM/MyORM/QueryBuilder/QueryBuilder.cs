@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 
 namespace MyORM
@@ -111,6 +112,65 @@ namespace MyORM
         {
             string groupByQuery = "GROUP BY " + businessLogic.ConvertLambdaExpressionToQueryString(func);
             queryString = queryString + " " + groupByQuery;
+        }
+
+
+        //
+        public override void Join<T>(Expression<Func<T, object>> func)
+        {
+            string tableNameAttribute = businessLogic.GetTableNameAttribute<T>();
+            if(tableNameAttribute == null)
+            {
+                tableNameAttribute = typeof(T).Name;
+            }
+            //Console.WriteLine(tableNameAttribute);
+
+
+            string joinedTablePropertyeName = businessLogic.ConvertLambdaExpressionToQueryString(func);
+            //Console.WriteLine(joinedTablePropertyeName);
+
+            string joinedTableNameAttribute = businessLogic.GetJoinedTableNameAttribute<T>(joinedTablePropertyeName);
+
+            if (joinedTableNameAttribute == null)
+            {
+                joinedTableNameAttribute = Type.GetType(func.Body.Type.ToString()).Name.ToString();
+            }
+            //Console.WriteLine(joinedTableNameAttribute);
+
+
+            var joinedTableProperties = Type.GetType(func.Body.Type.ToString()).GetProperties();
+            string joinedTableIdentityField = "";
+
+            for (int i = 0; i < joinedTableProperties.Length; i++)
+            {
+                var attributes = joinedTableProperties[i].GetCustomAttributes(false);  //Lay tat ca cac attributes cua property
+
+
+
+                bool isPrimaryProperty = businessLogic.CheckIsPrimaryKey(attributes); // kiem tra xem co phai la primary key hay k?
+
+                if (isPrimaryProperty)
+                {
+                    string columnNameAttribute = businessLogic.GetColumnNameAttribute(attributes);
+
+                    if (columnNameAttribute != null)
+                    {
+                        joinedTableIdentityField = columnNameAttribute;
+                    }
+                    else
+                    {
+                        joinedTableIdentityField = joinedTableProperties[i].Name;
+                    }
+                    break;
+                }
+            }
+
+            //Console.WriteLine(joinedTableIdentityField);
+
+
+            string oneToOneQuery = "LEFT OUTER JOIN " + joinedTableNameAttribute + ' ';
+            oneToOneQuery = oneToOneQuery + "ON " + tableNameAttribute + '.' + joinedTableNameAttribute + " = " + joinedTableNameAttribute + '.' + joinedTableIdentityField;
+            queryString = queryString + " " + oneToOneQuery;
         }
     }
 }

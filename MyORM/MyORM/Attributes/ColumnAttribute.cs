@@ -12,5 +12,8 @@ namespace MyORM.Attributes
         public bool IsPrimaryKey { get; set; }
         public string ColumnName { get; set; }
         public bool IsAutoIncreaseKey { get; set; }
+
+        //
+        public string OneToOne { get; set; }
     }
 }

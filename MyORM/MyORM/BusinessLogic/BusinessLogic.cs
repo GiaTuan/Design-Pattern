@@ -299,5 +299,42 @@ namespace MyORM
             }
             return false;
         }
+
+
+        //
+        public string GetOneToOneColumnNameAttribute(object[] attributes)
+        {
+            foreach (var attribute in attributes)
+            {
+                if (((ColumnAttribute)attribute).OneToOne != null)
+                {
+                    return ((ColumnAttribute)attribute).OneToOne;
+                }
+            }
+            return null;
+        }
+
+
+        public string GetJoinedTableNameAttribute<T>(string joinedTablePropertyeName)
+        {
+            var properties = typeof(T).GetProperties();
+
+            for (int i = 0; i < properties.Length; i++)
+            {
+                if (properties[i].Name != joinedTablePropertyeName) continue;
+
+                var attributes = properties[i].GetCustomAttributes(false);  //lay tat ca cac attributes cua property
+
+
+                string oneToOneColumnNameAttribute = GetOneToOneColumnNameAttribute(attributes);
+
+                if (oneToOneColumnNameAttribute != null)
+                {
+                    return oneToOneColumnNameAttribute;
+                }
+            }
+
+            return null;
+        }
     }
 }

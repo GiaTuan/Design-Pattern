@@ -5,16 +5,16 @@ using System.Linq.Expressions;
 
 namespace MyORM
 {
-    // Facade. is this you ????????????????? 
+    // Facade
     public class MyOrm : IMyORM 
     {
         private IDbConnection connection;
         private IDbCommand command;
        
-        private static Dictionary<string, ISQL> sqlTypes = new Dictionary<string, ISQL>(); // Prototype, is this you ?
+        private static Dictionary<string, ISQL> sqlTypes = new Dictionary<string, ISQL>(); // Prototype
 
-        private IQueryBuilder builder = new QueryBuilder(); // Builder, is this you ?
-        private IBusinessLogic businessLogic = new BusinessLogic(); // Bridge, is this you ?
+        private IQueryBuilder builder = new QueryBuilder(); // Builder
+        private IBusinessLogic businessLogic = new BusinessLogic(); // Bridge
         static MyOrm()
         {
             sqlTypes.Add("SQL Server", new SQLServer());
@@ -93,6 +93,12 @@ namespace MyORM
 
         public List<T> ExecuteReader<T>(string queryStr) where T : new()
         {
+            bool isJoining = false;
+            if(queryStr.Contains("LEFT OUTER JOIN"))
+            {
+                isJoining = true;
+            }
+
             List<T> result = new List<T>();
             try
             {
@@ -107,7 +113,7 @@ namespace MyORM
                     {
                         Mapping.MappingDataRowToFlexibleObject(reader,obj as MyFlexibleObject);  
                     }
-                    else Mapping.MappingDataRowToObject(reader, obj); 
+                    else Mapping.MappingDataRowToObject(reader, obj, isJoining); 
 
                     result.Add(obj);
                 }
@@ -150,6 +156,14 @@ namespace MyORM
         public IMyORM GroupBy<T>(Expression<Func<T, object>> func)
         {
             builder.GroupBy<T>(func);
+            return this;
+        }
+
+
+        //
+        public IMyORM Join<T>(Expression<Func<T, object>> func)
+        {
+            builder.Join<T>(func);
             return this;
         }
     }

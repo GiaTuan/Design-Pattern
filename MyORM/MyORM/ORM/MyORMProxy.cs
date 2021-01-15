@@ -89,5 +89,12 @@ namespace MyORM.ORM
         {
             return service.GroupBy<T>(func);
         }
+
+
+        //
+        public IMyORM Join<T>(Expression<Func<T, object>> func)
+        {
+            return service.Join<T>(func);
+        }
     }
 }

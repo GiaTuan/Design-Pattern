@@ -26,5 +26,10 @@ namespace MyORM
 
 
         IMyORM GroupBy<T>(Expression<Func<T, object>> func);
+
+
+
+        //
+        IMyORM Join<T>(Expression<Func<T, object>> func);
     }
 }
